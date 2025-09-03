@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+</head>
+<body>
+<header>
+  <div class="div-header">
+    <h2>Supermercado Chino</h2>
+
+    <div class="search-box">
+          <i class="fa-solid fa-magnifying-glass"></i>
+      <input  id="buscador" type="text" placeholder="Buscar productos...">
+    </div>
+
+    <nav>
+      <ul>
+        <li>
+            <i class="fa-solid fa-cart-shopping"></i>
+            <p>Carrito</p>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="hero-gradient"></div>
+    <div class="hero-overlay"></div>
+    <img src="imgs/superchino.webp" alt="Supermercado" class="hero-image">
+    
+    <div class="div-hero">
+      <h1>¡Compra online y recibilo en casa!</h1>
+      <p>Los productos más frescos del mercado, directamente a tu puerta. Calidad garantizada y precios increíbles.</p>
+      <button class="hero-button">Ver todos los productos</button>
+    </div>
+  </section>
+
+  <section id="categorias">
+    <h2>Nuestras categorías.</h2>
+    <div class="buttons-categorias">
+      <button class="button-categoria" data-categoria="todos">Todos</button>
+      <button class="button-categoria" data-categoria="frutasYVerduras">Frutas y Verduras</button>
+      <button class="button-categoria" data-categoria="lacteos">Lácteos</button>
+      <button class="button-categoria" data-categoria="carnesYPescados">Carnes y pescados</button>
+      <button class="button-categoria" data-categoria="bebidas">Bebidas</button>
+      <button class="button-categoria" data-categoria="panaderia">Panadería</button>
+      <button class="button-categoria" data-categoria="limpieza">Limpieza</button>
+    </div>
+  </section>
+<section id="productos">
+  <h2>Productos</h2>
+  <div id="contenedor-productos"></div>
+</section>
+
+
+</main>
+
+    <script src="main.js"></script>
+</body>
+</html>
