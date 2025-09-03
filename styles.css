@@ -226,3 +226,23 @@ button.active {
   background-color: white;
   text-align: center;
 }
+
+.producto img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+@media (max-width: 900px){
+  .producto{
+      flex: 1 1 calc(50% - 20px);
+  }
+}
+
+
+@media (max-width: 600px){
+  .producto{
+    flex: 1 1 100%
+  }
+}    
