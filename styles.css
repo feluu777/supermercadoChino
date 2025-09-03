@@ -235,14 +235,23 @@ button.active {
 }
 
 @media (max-width: 900px){
-  .producto{
-      flex: 1 1 calc(50% - 20px);
+  #contenedor-productos {
+    grid-template-columns: repeat(2, 1fr); 
   }
 }
 
-
 @media (max-width: 600px){
-  .producto{
-    flex: 1 1 100%
+  #contenedor-productos {
+    grid-template-columns: 1fr;
   }
-}    
+
+  h2 {
+    font-size: 20px;
+    color: red;
+    margin-bottom: 15px;
+  }
+
+  #buscador{
+    width: 170px;
+  }
+}
