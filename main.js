@@ -34,28 +34,22 @@ const productos = [
 
 
 
-// Seleccionamos botones y contenedor
 const botones = document.querySelectorAll(".buttons-categorias button");
 const contenedor = document.querySelector("#contenedor-productos");
 document.querySelector('[data-categoria="todos"]').click();
 
-// Escuchar clicks
 botones.forEach(button => {
   button.addEventListener("click", () => {
-    // Manejo de clase "active"
     botones.forEach(b => b.classList.remove("active"));
     button.classList.add("active");
 
-    // Obtener categoría
     const categoria = button.dataset.categoria;
 
-    // Filtrar productos
     const filtrados =
       categoria === "todos"
         ? productos
         : productos.filter(p => p.categoria === categoria);
 
-    // Renderizar productos en el contenedor
     contenedor.innerHTML = "";
     filtrados.forEach(p => {
   const div = document.createElement("div");

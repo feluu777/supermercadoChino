@@ -89,7 +89,6 @@ nav ul {
       color: #666;
     }
 
-/* === HERO SECTION (EFECTO CORREGIDO) === */
 .hero {
   position: relative;
   height: 500px;
@@ -98,7 +97,6 @@ nav ul {
   align-items: center;
 }
 
-/* Gradiente verde de fondo */
 .hero-gradient {
   position: absolute;
   top: 0;
@@ -109,7 +107,6 @@ nav ul {
   z-index: 1;
 }
 
-/* Capa de oscurecimiento */
 .hero-overlay {
   position: absolute;
   top: 0;
@@ -120,7 +117,6 @@ nav ul {
   z-index: 2;
 }
 
-/* Imagen con efecto de mezcla */
 .hero-image {
   position: absolute;
   top: 0;
@@ -132,7 +128,6 @@ nav ul {
   z-index: 3;
 }
 
-/* Contenido del hero */
 .div-hero {
   position: relative;
   display: flex;
@@ -142,7 +137,7 @@ nav ul {
   gap: 30px;
   margin-left: 50px;
   max-width: 600px;
-  z-index: 4; /* Por encima de todo */
+  z-index: 4; 
 }
 
 .div-hero h1 {
@@ -209,8 +204,8 @@ h2{
 }
 
 button.active {
-  background-color: #059669; /* color de fondo cuando está activo */
-  color: white; /* opcional: cambiar texto */
+  background-color: #059669; 
+  color: white; 
 }
 
 #contenedor-productos{
