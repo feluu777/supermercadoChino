@@ -19,14 +19,7 @@
       <input  id="buscador" type="text" placeholder="Buscar productos...">
     </div>
 
-    <nav>
-      <ul>
-        <li>
-            <i class="fa-solid fa-cart-shopping"></i>
-            <p>Carrito</p>
-        </li>
-      </ul>
-    </nav>
+
   </div>
 </header>
 
@@ -62,6 +55,18 @@
 
 
 </main>
+
+<!-- Sidenav del carrito -->
+<div id="sidenav-carrito" class="sidenav-carrito">
+  <button class="cerrar-sidenav" onclick="cerrarSidenavCarrito()">&times;</button>
+  <h2>Carrito</h2>
+  <ul id="lista-carrito"></ul>
+</div>
+<div id="overlay-carrito" class="overlay-carrito" onclick="cerrarSidenavCarrito()"></div>
+
+<!-- Botón para abrir el carrito -->
+<button id="abrir-carrito" class="btn-carrito" style="position:fixed;top:20px;right:20px;z-index:2100;">🛒</button>
+
 
     <script src="main.js"></script>
 </body>

@@ -31,6 +31,8 @@ document.addEventListener("DOMContentLoaded", () => {
     { nombre: "Esponja", categoria: "limpieza", img: "imgs/esponja.jpg" }
   ];
 
+  let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+
   const botones = document.querySelectorAll(".buttons-categorias button");
   const contenedor = document.querySelector("#contenedor-productos");
   document.querySelector('[data-categoria="todos"]').click();
@@ -58,8 +60,14 @@ document.addEventListener("DOMContentLoaded", () => {
         const nombre = document.createElement("p");
         nombre.textContent = p.nombre;
 
+        const btnCarrito = document.createElement("button");
+        btnCarrito.textContent = "Agregar al carrito";
+        btnCarrito.classList.add("btn-carrito");
+        btnCarrito.addEventListener("click", () => agregarAlCarrito(p.nombre));
+
         div.appendChild(img);
         div.appendChild(nombre);
+        div.appendChild(btnCarrito);
         contenedor.appendChild(div);
       });
     });
@@ -71,18 +79,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
   buscador.addEventListener("input", () => {
     const valorBuscador = buscador.value.toLowerCase();
-    let productosFiltrados = productos.filter(p => p.nombre.toLowerCase().includes(valorBuscador));
+    let productosFiltrados = productos.filter(p =>
+      p.nombre.toLowerCase().includes(valorBuscador)
+    );
 
     contenedor.innerHTML = "";
     if (productosFiltrados.length === 0) {
       const mensaje = document.createElement("p");
       mensaje.textContent = "No se encontraron productos.";
-      mensaje.classList.add("mensaje-no-productos"); // opcional, para estilos
+      mensaje.classList.add("mensaje-no-productos");
       contenedor.appendChild(mensaje);
     } else {
       productosFiltrados.forEach(producto => {
         const div = document.createElement("div");
         div.classList.add("producto");
+
         const img = document.createElement("img");
         img.src = producto.img;
 
@@ -95,4 +106,48 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     }
   });
+
+  function agregarAlCarrito(nombre) {
+    const producto = productos.find(producto => producto.nombre === nombre);
+    const productoEnCarrito = carrito.find(producto => producto.nombre === nombre);
+
+    if (productoEnCarrito) {
+      productoEnCarrito.cantidad += 1;
+    } else {
+      carrito.push({ ...producto, cantidad: 1 });
+    }
+    localStorage.setItem("carrito", JSON.stringify(carrito));
+  }
+
+  const btnAbrirCarrito = document.getElementById("abrir-carrito");
+  btnAbrirCarrito.addEventListener("click", abrirSidenavCarrito);
+
+  function abrirSidenavCarrito() {
+    document.getElementById("sidenav-carrito").classList.add("abierto");
+    document.getElementById("overlay-carrito").classList.add("abierto");
+    btnAbrirCarrito.style.display = "none";
+    renderizarCarrito();
+  }
+
+  window.cerrarSidenavCarrito = function() {
+    document.getElementById("sidenav-carrito").classList.remove("abierto");
+    document.getElementById("overlay-carrito").classList.remove("abierto");
+    btnAbrirCarrito.style.display = "block";
+  }
+
+  function renderizarCarrito() {
+    const lista = document.getElementById("lista-carrito");
+    lista.innerHTML = "";
+
+    if (carrito.length === 0) {
+      lista.innerHTML = "<li>El carrito está vacío.</li>";
+      return;
+    } else {
+      carrito.forEach(producto => {
+        const li = document.createElement("li");
+        li.textContent = `${producto.nombre} x${producto.cantidad}`;
+        lista.appendChild(li);
+      });
+    }
+  }
 });
